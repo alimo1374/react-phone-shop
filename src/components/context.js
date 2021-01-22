@@ -34,11 +34,9 @@ class ProductProvider extends Component {
     let tempProduct = [...storeProducts];
     if (min) {
       this.setState({ min });
-      tempProduct = storeProducts.filter((item) => {
-        if (item.price >= min && item.price <= this.state.max) {
-          return item;
-        }
-      });
+      tempProduct = storeProducts.filter(
+        (item) => item.price >= min && item.price <= this.state.max
+      );
     }
     this.setState(() => {
       return { products: tempProduct };
@@ -49,11 +47,9 @@ class ProductProvider extends Component {
 
     let tempProduct = [...storeProducts];
     if (max) {
-      tempProduct = storeProducts.filter((item) => {
-        if (item.price <= max && item.price >= this.state.min) {
-          return item;
-        }
-      });
+      tempProduct = storeProducts.filter(
+        (item) => item.price <= max && item.price >= this.state.min
+      );
     }
     this.setState(() => {
       return { products: tempProduct };
@@ -62,11 +58,9 @@ class ProductProvider extends Component {
   findProduct = (q) => {
     let tempProduct = [...storeProducts];
     if (q) {
-      tempProduct = storeProducts.filter((item) => {
-        if (item.title.toLocaleLowerCase().includes(q)) {
-          return item;
-        }
-      });
+      tempProduct = storeProducts.filter((item) =>
+        item.title.toLocaleLowerCase().includes(q)
+      );
     }
     this.setState(() => {
       return { products: tempProduct };
@@ -75,11 +69,7 @@ class ProductProvider extends Component {
   filterByBrand = (brand) => {
     let tempProduct = [...storeProducts];
     if (brand) {
-      tempProduct = storeProducts.filter((item) => {
-        if (item.company === brand) {
-          return item;
-        }
-      });
+      tempProduct = storeProducts.filter((item) => item.company === brand);
     }
     this.setState(() => {
       return { products: tempProduct };
@@ -125,7 +115,7 @@ class ProductProvider extends Component {
   };
   increment = (id) => {
     let tempCart = [...this.state.cart];
-    const selectedProduct = tempCart.find((item) => item.id == id);
+    const selectedProduct = tempCart.find((item) => item.id === id);
     const index = tempCart.indexOf(selectedProduct);
     const product = tempCart[index];
 

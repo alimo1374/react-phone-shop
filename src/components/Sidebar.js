@@ -4,10 +4,7 @@ import RangeSlider from "react-bootstrap-range-slider";
 import { ProductConsumer } from "./context";
 
 function Sidebar() {
-  const [brandName, setBrandName] = React.useState("");
   const [querySearch, setQuery] = React.useState("");
-  const [minValue, setMinPrice] = React.useState(100);
-  const [maxValue, setMaxPrice] = React.useState(1200);
   return (
     <React.Fragment>
       <ProductConsumer>
@@ -58,7 +55,7 @@ function Sidebar() {
                         onChange={(changeEvent) =>
                           value.filterMinPrice(changeEvent.target.value)
                         }
-                        tooltipLabel={(currentValue) => `${currentValue} \$`}
+                        tooltipLabel={(currentValue) => `${currentValue} $`}
                         tooltip="on"
                         min={100}
                         max={1200}
@@ -72,7 +69,7 @@ function Sidebar() {
                         onChange={(changeEvent) =>
                           value.filterMaxPrice(changeEvent.target.value)
                         }
-                        tooltipLabel={(currentValue) => `${currentValue} \$`}
+                        tooltipLabel={(currentValue) => `${currentValue} $`}
                         tooltip="on"
                         min={100}
                         max={1200}
