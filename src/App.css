@@ -5,14 +5,15 @@
   --mainDark: #232528;
   --mainGray: #bebebe;
   --mainYellow: #ffa400;
+  --mainRed: #ff1313;
 }
 body {
-  font-family: "Oswald", sans-serif !important;
+  font-family: "Open Sans", sans-serif !important;
   background: var(--mainWhite) !important;
   color: var(--mainDark) !important;
 }
 .text-title {
-  font-family: "Permanent Marker", cursive;
+  font-family: "Asap", sans-serif;
   letter-spacing: 0.3rem;
   text-transform: uppercase;
 }

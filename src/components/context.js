@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { storeProducts, detailProduct } from "../data";
+import { phoneProducts, detailProduct } from "../data";
 const ProductContext = React.createContext();
 //provider
 //consumer
@@ -22,7 +22,7 @@ class ProductProvider extends Component {
   }
   setProducts = () => {
     let tempProducts = [];
-    storeProducts.forEach((item) => {
+    phoneProducts.forEach((item) => {
       const singleItem = { ...item };
       tempProducts = [...tempProducts, singleItem];
     });
@@ -31,10 +31,10 @@ class ProductProvider extends Component {
     });
   };
   filterMinPrice = (min) => {
-    let tempProduct = [...storeProducts];
+    let tempProduct = [...phoneProducts];
     if (min) {
       this.setState({ min });
-      tempProduct = storeProducts.filter(
+      tempProduct = phoneProducts.filter(
         (item) => item.price >= min && item.price <= this.state.max
       );
     }
@@ -45,9 +45,9 @@ class ProductProvider extends Component {
   filterMaxPrice = (max) => {
     this.setState({ max });
 
-    let tempProduct = [...storeProducts];
+    let tempProduct = [...phoneProducts];
     if (max) {
-      tempProduct = storeProducts.filter(
+      tempProduct = phoneProducts.filter(
         (item) => item.price <= max && item.price >= this.state.min
       );
     }
@@ -56,9 +56,9 @@ class ProductProvider extends Component {
     });
   };
   findProduct = (q) => {
-    let tempProduct = [...storeProducts];
+    let tempProduct = [...phoneProducts];
     if (q) {
-      tempProduct = storeProducts.filter((item) =>
+      tempProduct = phoneProducts.filter((item) =>
         item.title.toLocaleLowerCase().includes(q)
       );
     }
@@ -67,9 +67,9 @@ class ProductProvider extends Component {
     });
   };
   filterByBrand = (brand) => {
-    let tempProduct = [...storeProducts];
+    let tempProduct = [...phoneProducts];
     if (brand) {
-      tempProduct = storeProducts.filter((item) => item.company === brand);
+      tempProduct = phoneProducts.filter((item) => item.company === brand);
     }
     this.setState(() => {
       return { products: tempProduct };

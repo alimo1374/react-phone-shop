@@ -1,9 +1,9 @@
 import React from "react";
-import Product from "./Product";
+import Phone from "./Phone";
 import Sidebar from "./Sidebar";
 import Title from "./Title";
 import { ProductConsumer } from "./context";
-function ProductList() {
+function PhoneList() {
   return (
     <React.Fragment>
       <div className="py-5">
@@ -13,12 +13,12 @@ function ProductList() {
           </div>
           <div className="col-lg-8">
             <div className="container">
-              <Title name="product" title="list" />
+              <Title name="phone" title="list" />
               <div className="row">
                 <ProductConsumer>
                   {(value) => {
                     return value.products.map((product) => {
-                      return <Product key={product.id} product={product} />;
+                      return <Phone key={product.id} product={product} />;
                     });
                   }}
                 </ProductConsumer>
@@ -31,4 +31,4 @@ function ProductList() {
   );
 }
 
-export default ProductList;
+export default PhoneList;
