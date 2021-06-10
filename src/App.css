@@ -8,12 +8,10 @@
   --mainRed: #ff1313;
 }
 body {
-  font-family: "Open Sans", sans-serif !important;
   background: var(--mainWhite) !important;
   color: var(--mainDark) !important;
 }
 .text-title {
-  font-family: "Asap", sans-serif;
   letter-spacing: 0.3rem;
   text-transform: uppercase;
 }

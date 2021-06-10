@@ -6,12 +6,12 @@ import { ProductConsumer } from "./context";
 function PhoneList() {
   return (
     <React.Fragment>
-      <div className="py-5">
+      <div className="py-5 px-4">
         <div className="row">
-          <div className="col-lg-2">
+          <div className="col-lg-3 col-sm-12 col-xs-12">
             <Sidebar />
           </div>
-          <div className="col-lg-8">
+          <div className="col-lg-9 col-sm-12 col-xs-12">
             <div className="container">
               <Title name="phone" title="list" />
               <div className="row">

@@ -3,40 +3,82 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { Button2 } from "./Button";
 import { ProductConsumer } from "./context";
-
+import { Logo } from "./assets/images/logo.js";
 export default class NavBar extends Component {
+  state = {
+    isCollapsed: false,
+  };
+  componentDidMount() {
+    if (window.innerWidth < 768) {
+      this.setState({ isCollapsed: true });
+    }
+    window.addEventListener("resize", () => {
+      if (window.innerWidth < 768) {
+        this.setState({ isCollapsed: true });
+      } else {
+        this.setState({ isCollapsed: false });
+      }
+    });
+  }
+  componentWillUnmount() {
+    window.removeEventListener("resize");
+  }
+  showNavbar = (event) => {
+    this.setState({ isCollapsed: !this.state.isCollapsed });
+  };
   render() {
     return (
-      <NavWrapper className="navbar navbar-expand-sm  px-sm-5">
+      <NavWrapper className="navbar navbar-expand-md navbar-dark bg-dark  px-sm-5">
+        <button
+          onClick={this.showNavbar}
+          className="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarTogglerDemo03"
+          aria-controls="navbarTogglerDemo03"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span className="text-light navbar-toggler-icon"></span>
+        </button>
         <ProductConsumer>
           {(value) => (
             <>
               <Link to="/">
-                <span className="navbar-brand">Logo</span>
+                <span className="navbar-brand mx-2">
+                  <Logo />
+                </span>
               </Link>
-              <ul className="navbar-nav align-item-center">
-                <li className="nav-item ml-5">
-                  <Link to="/phone" className="nav-link">
-                    Phone
-                  </Link>
-                </li>
-                <li className="nav-item ml-5">
-                  <Link to="/laptop" className="nav-link">
-                    Laptop
-                  </Link>
-                </li>
-                <li className="nav-item ml-5">
-                  <Link to="/playstation" className="nav-link">
-                    Playstation
-                  </Link>
-                </li>
-              </ul>
+              {this.state.isCollapsed ? null : (
+                <div
+                  id="navbarTogglerDemo03"
+                  className="collaplse navbar-collapse"
+                >
+                  <ul className="navbar-nav align-item-center">
+                    <li className="nav-item ml-5">
+                      <Link to="/phone" className="nav-link">
+                        Phone
+                      </Link>
+                    </li>
+                    <li className="nav-item ml-5">
+                      <Link to="/laptop" className="nav-link">
+                        Laptop
+                      </Link>
+                    </li>
+                    <li className="nav-item ml-5">
+                      <Link to="/playstation" className="nav-link">
+                        Playstation
+                      </Link>
+                    </li>
+                  </ul>
+                </div>
+              )}
               <Link to="/cart" className="ml-auto">
                 <Button2 className="button2">
                   <span className="mr-2">
-                    <i className="fas fa-cart-plus" />
+                    <i className="fas fa-cart-plus fa-sm" />
                   </span>
-                  cart <span className="red-bg">{value.cart.length}</span>
+                  My cart <span className="blue-bg">{value.cart.length}</span>
                 </Button2>
               </Link>
             </>
@@ -57,16 +99,15 @@ const NavWrapper = styled.nav`
   .button2 {
     position: relative;
   }
-  .red-bg {
-    font-size: smaller;
-    background: var(--mainRed);
+  .blue-bg {
+    font-size: 12px;
+    background: var(--lightBlue);
     border-radius: 50%;
-    color: var(--mainWhite);
+    color: var(--mainDark);
     position: absolute;
-    bottom: 11px;
-    left: -11px;
+    top: -8px;
+    right: -6px;
     display: flex;
-    align-items: center;
     justify-content: center;
     width: 20px;
     height: 20px;

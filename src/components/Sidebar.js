@@ -11,9 +11,9 @@ function Sidebar() {
         {(value) => {
           return (
             <div className="row">
-              <div className="col-12 mx-3">
+              <div className="col-lg-12 col-sm-12 col-xs-12">
                 <div className="row">
-                  <div className="form-group col-lg-8 col-xs-9">
+                  <div className="form-group col-lg-8 col-sm-12 col-xs-12 px-4">
                     <input
                       className="form-control"
                       type="text"
@@ -21,7 +21,7 @@ function Sidebar() {
                       placeholder="Search"
                     />
                   </div>
-                  <div className="form-group col-lg-4 col-xs-3">
+                  <div className="form-group col-lg-4 col-sm-12 col-xs-12 px-4">
                     <button
                       onClick={() => value.findProduct(querySearch)}
                       type="button"
@@ -31,8 +31,8 @@ function Sidebar() {
                     </button>
                   </div>
                 </div>
-                <div className="row">
-                  <div className="card col-lg-12 mx-3">
+                <div className="row px-4">
+                  <div className="card col-lg-12 col-sm-12 col-xs-12 px-2">
                     <div className="form-group col-sm-3 col-xs-6 col-lg-12 my-2">
                       <select
                         onChange={(e) => value.filterByBrand(e.target.value)}
@@ -48,7 +48,7 @@ function Sidebar() {
                     <div className="form-group col-sm-3 col-xs-6 col-lg-12 my-2">
                       <label>Price</label>
                     </div>
-                    <div className="form-group col-sm-3 col-xs-6 col-lg-12 my-3">
+                    <div className="form-group col-sm-3 col-xs-6 col-lg-12 px-4">
                       <label>Min</label>
                       <RangeSlider
                         value={value.min}
@@ -62,7 +62,7 @@ function Sidebar() {
                         step={100}
                       />
                     </div>
-                    <div className="form-group col-sm-3 col-xs-6 col-lg-12 my-2">
+                    <div className="form-group col-sm-3 col-xs-6 col-lg-12 px-4">
                       <label>Max</label>
                       <RangeSlider
                         value={value.max}
